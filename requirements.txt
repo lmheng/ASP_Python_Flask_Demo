@@ -59,7 +59,6 @@ grpcio==1.33.2
 gunicorn==20.0.4
 h5py==2.10.0
 HeapDict==1.0.1
-helpdev==0.7.1
 html5lib @ file:///tmp/build/80754af9/html5lib_1593446221756/work
 hyperlink @ file:///home/conda/feedstock_root/build_artifacts/hyperlink_1596631460104/work
 idna @ file:///tmp/build/80754af9/idna_1593446292537/work
