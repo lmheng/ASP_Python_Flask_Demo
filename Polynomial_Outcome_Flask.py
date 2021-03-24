@@ -23,7 +23,3 @@ def callModelTwo():
     print(modelTwo.predict([value])[0])
     return str(modelTwo.predict([value])[0])
 
-
-# run the server
-if __name__ == '__main__':
-    app.run(port=5000, debug=True)
