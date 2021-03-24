@@ -50,7 +50,6 @@ fsspec==0.7.4
 future==0.18.2
 gast==0.3.3
 glob2==0.7
-gmpy2==2.0.8
 google-auth==1.23.0
 google-auth-oauthlib==0.4.2
 google-pasta==0.2.0
@@ -106,7 +105,7 @@ opt-einsum==3.3.0
 packaging==20.4
 pandocfilters==1.4.2
 paramiko==2.7.1
-parso==0.7.0
+parso==0.8.0
 partd==1.1.0
 path==13.1.0
 pathlib2==2.3.5
