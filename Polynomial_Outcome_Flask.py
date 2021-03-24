@@ -1,9 +1,13 @@
-import pandas as pd
-import numpy as np
-from flask import Flask, request, jsonify
+import os
+from flask import Flask, request, send_from_directory
 import pickle
 
 app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return "Welcome!"
 
 
 @app.route('/random_forest_classification', methods=['GET'])
@@ -23,3 +27,8 @@ def callModelTwo():
     print(modelTwo.predict([value])[0])
     return str(modelTwo.predict([value])[0])
 
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+        'favicon.ico', mimetype='image/seed_logo.png')
