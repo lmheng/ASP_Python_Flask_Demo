@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, send_from_directory
 import pickle
 from sklearn.preprocessing import StandardScaler
+import cloudpickle
 
 app = Flask(__name__)
 
@@ -33,7 +34,7 @@ def callModelTwo():
 @app.route('/text_processing', methods=['GET'])
 def callModelThree():
     xValue = request.args.get('x')
-    preprocessing = pickle.load(open('transpose_text_input.pkl', 'rb'))
+    preprocessing = cloudpickle.load(open('transpose_text_input.pkl', 'rb'))
     xValue = preprocessing(xValue)
     value = [xValue]
     cv = pickle.load(open('count_vectorizer.pkl', 'rb'))

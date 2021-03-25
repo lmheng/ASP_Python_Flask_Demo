@@ -13,3 +13,4 @@ snowballstemmer==2.0.0
 imbalanced-learn==0.8.0
 pandas==1.1.5
 nltk==3.5
+cloudpickle==1.6.0
