@@ -15,7 +15,7 @@ def index():
 def callModelOne():
     xValue = request.args.get('x')
     value = xValue.split(" ")
-    value = StandardScaler().transform([value])
+    value = StandardScaler().fit_transform([value])
     modelOne = pickle.load(open('random_forest_classifier.pkl', 'rb')) # load model1 to the server
     return str(modelOne.predict(value)[0])
 
