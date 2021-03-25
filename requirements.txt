@@ -10,3 +10,4 @@ pickleshare==0.7.5
 scikit-image==0.16.2
 scikit-learn==0.24.1
 snowballstemmer==2.0.0
+imbalanced-learn==0.8.0

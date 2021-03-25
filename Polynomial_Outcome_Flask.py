@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, send_from_directory
 import pickle
+from sklearn.preprocessing import StandardScaler
 
 app = Flask(__name__)
 
@@ -14,9 +15,9 @@ def index():
 def callModelOne():
     xValue = request.args.get('x')
     value = xValue.split(" ")
-    print(value)
+    value = StandardScaler().transform([value])
     modelOne = pickle.load(open('random_forest_classifier.pkl', 'rb')) # load model1 to the server
-    return str(modelOne.predict([value])[0])
+    return str(modelOne.predict(value)[0])
 
 
 @app.route('/random_forest_regression', methods=['GET'])
