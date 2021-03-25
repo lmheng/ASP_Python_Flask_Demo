@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, send_from_directory
 import pickle
 from sklearn.preprocessing import StandardScaler
+from imblearn.over_sampling import SMOTE
 
 app = Flask(__name__)
 
@@ -15,7 +16,19 @@ def index():
 def callModelOne():
     xValue = request.args.get('x')
     value = xValue.split(" ")
-    value = StandardScaler().fit_transform([value])
+
+    dataset = pd.read_csv('C:/Users/LM/Desktop/pythonProject1/fetal_health.csv')
+    x = dataset.iloc[:, :-1].values
+    y = dataset.iloc[:, -1].values
+    oversample = SMOTE()
+    x, y = oversample.fit_resample(x, y)
+    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.25, shuffle=True, random_state=42)
+
+    sc = StandardScaler()
+    sc.fit(X_train)
+
+    value = sc.transform(value)
+
     modelOne = pickle.load(open('random_forest_classifier.pkl', 'rb')) # load model1 to the server
     return str(modelOne.predict(value)[0])
 
