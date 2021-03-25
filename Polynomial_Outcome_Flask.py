@@ -30,6 +30,18 @@ def callModelTwo():
     return str(modelTwo.predict([value])[0])
 
 
+@app.route('/text_processing', methods=['GET'])
+def callModelThree():
+    xValue = request.args.get('x')
+    preprocessing = pickle.load(open('transpose_text_input.pkl', 'rb'))
+    xValue = preprocessing(xValue)
+    value = [xValue]
+    cv = pickle.load(open('count_vectorizer.pkl', 'rb'))
+    value = cv.transform(value).toarray()
+    modelThree = pickle.load(open('text_processing.pkl', 'rb'))
+    return str(modelThree.predict(value)[0])
+
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
